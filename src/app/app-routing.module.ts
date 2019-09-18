@@ -12,14 +12,15 @@ import {CreateApartmentComponent} from './create-apartment/create-apartment.comp
 
 
 const routes: Routes = [
-  {path: '', component: HomepageComponent},
+  {path: 'apartments', component: HomepageComponent},
   {path: 'apartments/:id', component: ApartmentDetailComponent},
   {path: 'api/login', component: LoginComponent},
   {path: 'api/sign-up', component: RegisterComponent},
   {path: 'api/host/sign-up', component: RegisterHostComponent},
   {path: 'upload', component: UploadFileComponent},
   {path: 'home-for-host', component: HomeForHostComponent},
-  {path: 'create-apartment', component: CreateApartmentComponent}
+  {path: 'create-apartment', component: CreateApartmentComponent},
+  {path: '**', redirectTo: '/apartments', pathMatch: 'full'}
 ];
 @NgModule({
   declarations: [],

@@ -17,16 +17,28 @@ export class ApartmentService {
     });
   }
   getApartmentById(id: number): Observable<Apartment> {
-    return this.http.get<Apartment>(`${this.API_URL}/${id}`);
+    return this.http.get<Apartment>(`${this.API_URL}/${id}`,
+      {
+        headers: this.authenService.header
+      });
   }
-  createApartment(book: Partial<Apartment>): Observable<Apartment> {
-    return this.http.post<Apartment>(this.API_URL, book);
+  createApartment(apartment: Partial<Apartment>): Observable<Apartment> {
+    return this.http.post<Apartment>(this.API_URL, apartment,
+      {
+        headers: this.authenService.header
+      });
   }
-  updateApartment(book: Apartment): Observable<Apartment> {
-    return this.http.put<Apartment>(`${this.API_URL}/${book.id}`, book);
+  updateApartment(apartment: Apartment): Observable<Apartment> {
+    return this.http.put<Apartment>(`${this.API_URL}/${apartment.id}`, apartment,
+      {
+        headers: this.authenService.header
+      });
   }
   deleteApartment(id: number): Observable<Apartment> {
-    return this.http.delete<Apartment>(`${this.API_URL}/${id}`);
+    return this.http.delete<Apartment>(`${this.API_URL}/${id}`,
+      {
+        headers: this.authenService.header
+      });
   }
   constructor(private http: HttpClient, private authenService: AuthenticationService) {
   }
