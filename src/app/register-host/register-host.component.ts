@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {UserService} from '../user.service';
 
 function comparePassword(c: AbstractControl) {
   const v = c.value;
@@ -18,39 +19,36 @@ export class RegisterHostComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
   }
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      name: ['', [Validators.required, Validators.email]],
+      username: ['', Validators.required],
       pwGroup: this.fb.group({
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
       }, {validator: comparePassword}),
-      country: ['', Validators.required],
-      age: ['', [Validators.required, Validators.min(18)]],
-      gender: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.pattern(/^\+84\d{9,10}$/)]]
     });
   }
 
   onSubmit() {
     console.log('register');
     this.router.navigate(['/login']);
-    // if (this.registerForm.invalid) {
-    //   return;
-    // }
-    // this.userService.register(this.registerForm.value)
-    //   .pipe()
-    //   .subscribe(
-    //     data => {
-    //       this.router.navigate(['/login']);
-    //     },
-    //     error => {
-    //       console.log('error');
-    //     }
-    //   );
+    if (this.registerForm.invalid) {
+      return;
+    }
+    this.userService.register(this.registerForm.value)
+      .pipe()
+      .subscribe(
+        data => {
+          this.router.navigate(['/login']);
+        },
+        error => {
+          console.log('error');
+        }
+      );
   }
 
 }
