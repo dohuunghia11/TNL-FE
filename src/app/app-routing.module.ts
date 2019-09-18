@@ -4,12 +4,16 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomepageComponent} from './homepage/homepage.component';
 import {ApartmentDetailComponent} from './apartment-detail/apartment-detail.component';
 import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
+import {RegisterHostComponent} from './register-host/register-host.component';
 
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
   {path: 'apartments/:id', component: ApartmentDetailComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'registerUser', component: RegisterComponent},
+  {path: 'registerHost', component: RegisterHostComponent}
 ];
 @NgModule({
   declarations: [],
