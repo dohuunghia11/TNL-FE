@@ -9,13 +9,17 @@ import {ApartmentService} from '../apartment.service';
 })
 export class ApartmentDetailComponent implements OnInit {
 
-  listApartment: Apartment[];
+  listApartment: Apartment;
+  time: Date = new Date();
 
   constructor(private apartmentService: ApartmentService) {
-    this.listApartment = apartmentService.listApartment;
+    this.listApartment = apartmentService.listApartment[0];
   }
 
   ngOnInit() {
+    setInterval(() => {
+      this.time = new Date();
+    }, 1000);
   }
 
 }

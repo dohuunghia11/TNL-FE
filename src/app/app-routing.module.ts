@@ -7,7 +7,7 @@ import {ApartmentDetailComponent} from './apartment-detail/apartment-detail.comp
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
-  {path: 'detail', component: ApartmentDetailComponent}
+  {path: 'houses/:id', component: ApartmentDetailComponent}
 ];
 @NgModule({
   declarations: [],
