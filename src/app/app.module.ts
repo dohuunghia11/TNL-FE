@@ -10,6 +10,7 @@ import {AppRoutingModule} from './app-routing.module';
 import { SearchComponent } from './search/search.component';
 import {ApartmentDetailComponent} from './apartment-detail/apartment-detail.component';
 import {FormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {FormsModule} from '@angular/forms';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
