@@ -4,9 +4,10 @@ export interface Apartment {
   address: string;
   numberOfRooms: string;
   numberOfBathrooms: string;
+  category: string;
   description: string;
   prize: string;
   area: string;
   rate: string;
-  idNumber: number;
+  image: string;
 }
