@@ -12,6 +12,7 @@ import {ApartmentDetailComponent} from './apartment-detail/apartment-detail.comp
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { UploadFileComponent } from './upload-file/upload-file.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoginComponent } from './login/login.component';
     HeaderComponent,
     FooterComponent,
     SearchComponent,
-    LoginComponent
+    LoginComponent,
+    UploadFileComponent
   ],
   imports: [
     BrowserModule,
