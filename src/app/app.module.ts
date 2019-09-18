@@ -11,6 +11,7 @@ import { SearchComponent } from './search/search.component';
 import {ApartmentDetailComponent} from './apartment-detail/apartment-detail.component';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {RouterModule} from '@angular/router';
     HomepageComponent,
     HeaderComponent,
     FooterComponent,
-    SearchComponent
+    SearchComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
