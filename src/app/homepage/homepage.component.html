@@ -5,9 +5,11 @@
       <h4>Apartment list</h4>
       <div class="card single-apartment" *ngFor="let apartment of apartments; i as index" >
         <a routerLink="#"><img class="card-img-top img-fluid" src="/assets/image/house.png"></a>
-        <div class="card-body">
-          <h4 class="card-title">{{apartment.name}}</h4>
-          <p class="card-text">{{apartment.name}}</p>
+        <div class="card-body text-center">
+          <a routerLink="#"><h5 class="card-title">{{apartment.name}}</h5></a>
+          <p class="card-text">{{apartment.prize}}</p>
+          <p class="card-text">{{apartment.address}}</p>
+          <p class="card-text">{{apartment.rate}}</p>
         </div>
       </div>
     </div>
