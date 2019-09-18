@@ -15,10 +15,11 @@ export class HomepageComponent implements OnInit {
   constructor(private apartmentService: ApartmentService) { }
 
   ngOnInit() {
-    // this.apartmentService.getApartments()
-    //   .subscribe(next => {
-    //     this.apartments = next;
-    //   });
+    this.apartmentService.getApartments()
+      .subscribe(next => {
+        this.bestChoiceApartments = next;
+        console.log(next);
+      });
   }
 
 }
