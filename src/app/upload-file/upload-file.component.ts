@@ -24,11 +24,9 @@ export class UploadFileComponent implements OnInit {
 
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
-    console.log(this.selectedFile);
   }
 
   onUpload() {
-    console.log('upload');
     const id = Math.random().toString(36).substring(2);
     this.ref = this.afStorage.ref(id);
     this.ref.put(this.selectedFile)
