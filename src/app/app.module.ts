@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import { SearchComponent } from './search/search.component';
 import {ApartmentDetailComponent} from './apartment-detail/apartment-detail.component';
@@ -18,6 +18,8 @@ import { RegisterHostComponent } from './register-host/register-host.component';
 
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireStorageModule} from 'angularfire2/storage';
+import { FooterTopComponent } from './footer-top/footer-top.component';
+import {AuthHttpInterceptorService} from './auth-http-interceptor.service';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDiU5Zzun5XS8UiQJMCcY9gwYEb4MFTbPs',
@@ -40,7 +42,8 @@ const firebaseConfig = {
     LoginComponent,
     UploadFileComponent,
     RegisterComponent,
-    RegisterHostComponent
+    RegisterHostComponent,
+    FooterTopComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,13 @@ const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireStorageModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
