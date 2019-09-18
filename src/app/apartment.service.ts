@@ -13,10 +13,7 @@ export class ApartmentService {
 
   getApartments(): Observable<Apartment[]> {
     return this.http.get<Apartment[]>(this.API_URL, {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${this.authenService.token}`,
-        'Content-Type': 'application/json'
-      })
+      headers: this.authenService.header
     });
   }
   getApartmentById(id: number): Observable<Apartment> {

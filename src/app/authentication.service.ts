@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthenticationService {
-
+  header: HttpHeaders;
   private readonly API_URL = 'http://localhost:8080/api/login';
   token: string;
 
