@@ -9,7 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import { SearchComponent } from './search/search.component';
 import {ApartmentDetailComponent} from './apartment-detail/apartment-detail.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import { LoginComponent } from './login/login.component';
 
@@ -28,7 +28,8 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
