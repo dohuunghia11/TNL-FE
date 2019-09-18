@@ -1,1 +1,16 @@
-<p>homepage works!</p>
+<div class="container bg-light">
+  <app-header></app-header>
+  <div class="row">
+    <div class="apartment-list">
+      <h4>Apartment list</h4>
+      <div class="card single-apartment" *ngFor="let apartment of apartments; i as index" >
+        <a routerLink="#"><img class="card-img-top img-fluid" src="/assets/image/house.png"></a>
+        <div class="card-body">
+          <h4 class="card-title">{{apartment.name}}</h4>
+          <p class="card-text">{{apartment.name}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
