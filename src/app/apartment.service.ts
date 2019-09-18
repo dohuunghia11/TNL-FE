@@ -15,7 +15,7 @@ export class ApartmentService {
       address: 'Ngõ 28,Số 39,Tăng Thiết Gíap',
       numberOfRooms: '2',
       numberOfBathrooms: '1',
-      prize: '1500000',
+      price: '1500000',
       description: 'Phòng riêng · 1 phòng tắm · 1 giường · 1 phòng ngủ · 2 khách (tối đa 2 khách)' +
         '\n' +
         '✔️ Mọi thứ đã đều được chuẩn bị tinh tươm cho bạn, từ giường ngủ thơm phức mùi ga gối mới tới bếp ăn đầy đủ tiện nghi\n' +
@@ -53,7 +53,7 @@ export class ApartmentService {
     },
     {
       id: 1, name: 'Dao Dat', category: 'nha cap 4', address: 'Nga Tu So',
-      numberOfRooms: '7', numberOfBathrooms: '4', prize: '4500000', description: 'Nha binh thuong', image: 'src', rate: '1', area: '30'
+      numberOfRooms: '7', numberOfBathrooms: '4', price: '4500000', description: 'Nha binh thuong', image: 'src', rate: '1', area: '30'
     }
   ];
   apartment: Apartment[];
