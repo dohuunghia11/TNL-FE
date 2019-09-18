@@ -8,7 +8,7 @@ import {Apartment} from '../model/Apartment';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  apartments: Apartment[] = [
+  bestChoiceApartments: Apartment[] = [
     {
       id: 1, name: 'Premium Luxury',
       address: 'Binh Thanh, Ho Chi Minh, VietNam', numberOfRooms: '4', numberOfBathrooms: '2',
@@ -47,6 +47,9 @@ export class HomepageComponent implements OnInit {
       prize: '1550000', rate: '4'
     }
   ];
+
+  bestSaleOffApartments = this.bestChoiceApartments;
+  suggestionApartments = this.bestChoiceApartments;
   constructor(private apartmentService: ApartmentService) { }
 
   ngOnInit() {
