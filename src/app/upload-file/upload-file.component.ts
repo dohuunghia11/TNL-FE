@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask} from 'angularfire2/storage';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-upload-file',
@@ -7,9 +11,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadFileComponent implements OnInit {
 
-  constructor() { }
+  selectedFile: File;
+  ref: AngularFireStorageReference;
+  downloadURL: string;
+
+
+  constructor(private httpClient: HttpClient, private afStorage: AngularFireStorage) {
+  }
 
   ngOnInit() {
   }
 
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
+  }
+
+  onUpload() {
+    console.log('upload');
+    const id = Math.random().toString(36).substring(2);
+    this.ref = this.afStorage.ref(id);
+    this.ref.put(this.selectedFile)
+      .then(snapshot => {
+        return snapshot.ref.getDownloadURL();   // Will return a promise with the download link
+      })
+
+      .then(downloadURL => {
+        this.downloadURL = downloadURL;
+        console.log(downloadURL);
+        return downloadURL;
+      })
+
+      .catch(error => {
+        // Use to signal error if something goes wrong.
+        console.log(`Failed to upload file and get link - ${error}`);
+      });
+  }
 }

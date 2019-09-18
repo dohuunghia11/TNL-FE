@@ -6,6 +6,7 @@ import {ApartmentDetailComponent} from './apartment-detail/apartment-detail.comp
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {RegisterHostComponent} from './register-host/register-host.component';
+import {UploadFileComponent} from './upload-file/upload-file.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'apartments/:id', component: ApartmentDetailComponent},
   {path: 'api/login', component: LoginComponent},
   {path: 'api/sign-up', component: RegisterComponent},
-  {path: 'api/host/sign-up', component: RegisterHostComponent}
+  {path: 'api/host/sign-up', component: RegisterHostComponent},
+  {path: 'upload', component: UploadFileComponent},
 ];
 @NgModule({
   declarations: [],
