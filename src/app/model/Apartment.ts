@@ -7,4 +7,6 @@ export interface Apartment {
   description: string;
   prize: string;
   area: string;
+  rate: string;
+  idNumber: number;
 }
