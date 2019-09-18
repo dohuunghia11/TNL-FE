@@ -12,8 +12,12 @@
     <div class="col-sm-8 ">
       <div class="container shadow">
         <p class="font-weight-bold " style="font-size: 20px">{{listApartment.name}} ____ {{ time | date:'hh:mm:ss a' }}</p>
-        <p class="font-weight-bold ">{{listApartment.address}}</p>
-        <p class="font-weight-bold ">Nhà riêng: {{listApartment.area}} m2</p>
+        <p class="font-weight-bold ">
+          <img src="assets/icon/address.png" width="20" height="20"> {{listApartment.address}}
+        </p>
+        <p class="font-weight-bold ">
+          <img src="assets/icon/house.png" width="20" height="20">  Nhà riêng: {{listApartment.area}} m2
+        </p>
         <p class="overflow-auto">{{listApartment.description}}</p>
       </div>
       <p></p>
@@ -22,19 +26,44 @@
       <div class="container bg-light shadow">
         <p>Giới thiệu về các tiện nghi và dịch vụ tại nơi lưu trú</p>
         <p class="font-weight-bold" style="font-size: 20px" >Tiện ích gia đình </p>
-        <img src="assets/icon/chair.png" width="60" height="60"> Phù hợp với trẻ nhỏ
-        <img src="assets/icon/No-Smoking-Sign-Vinyl-Decal-Sticker__27437.1506204179.jpg" width="35" height="35" >Không hút thuốc
+        <div class="row">
+          <div class="col-lg-4">
+            <img src="assets/icon/chair.png" width="60" height="60">Phù hợp với trẻ nhỏ
+          </div>
+          <div class="col-lg-4">
+            <img src="assets/icon/No-Smoking-Sign-Vinyl-Decal-Sticker__27437.1506204179.jpg" width="35" height="35" > Không hút thuốc
+          </div>
+        </div>
         <p class="font-weight-bold" style="font-size: 20px" >Tiện ích bếp </p>
-        <img src="assets/icon/electric.png" width="35" height="35"> Bếp điện
-        <img src="assets/icon/microwave-oven-60-798617.png" width="35" height="35"> Lò vi sóng
-        <img src="assets/icon/fridge-119-733211.png" width="35" height="35"> Tủ lạnh
+        <div class="row">
+          <div class="col-lg-4">
+            <img src="assets/icon/electric.png" width="35" height="35"> Bếp điện
+          </div>
+          <div class="col-lg-4">
+            <img src="assets/icon/microwave-oven-60-798617.png" width="35" height="35"> Lò vi sóng
+          </div>
+          <div class="col-lg-4">
+            <img src="assets/icon/fridge-119-733211.png" width="35" height="35"> Tủ lạnh
+          </div>
+        </div>
         <p class="font-weight-bold" style="font-size: 20px" >Tiện ích giải trí </p>
         <img src="assets/icon/background_1151777.png" width="35" height="35"> Cảnh quan đẹp
       </div>
       <p class="font-weight-bold shadow" style="font-size: 25px">Đánh Giá</p>
       <div class="container shadow">
         <div class="card">
-          <div class="card-header">Trần Thanh Hiếu Thảo </div>
+          <div class="card-header row">
+            <div class="col-lg-1">
+              <img src="assets/PictureHouseDetail/room_18463_14_1545395734.jpg" width="35" height="35"
+                   style="border-radius: 50%">
+            </div>
+            <div class="col-lg-4">
+              <p> Trần Thanh Hiếu Thảo</p>
+            </div>
+            <div class="col-lg-7 text-lg-right">
+              <p> 2 month ago</p>
+            </div>
+          </div>
           <div class="card-body">Lần này đặt phòng do có sự cố phòng nên chủ nhà đã liên hệ giúp mình sang một homestay khác. Hy vọng lần sau sẽ có dịp ở homestay này :D</div>
         </div>
         <form class="form-inline" >
