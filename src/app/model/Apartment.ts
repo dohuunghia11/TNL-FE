@@ -6,7 +6,7 @@ export interface Apartment {
   numberOfBathrooms: string;
   category: string;
   description: string;
-  prize: string;
+  price: string;
   area: string;
   rate: string;
   image: string;
