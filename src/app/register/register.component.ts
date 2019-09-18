@@ -24,21 +24,18 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      name: ['', [Validators.required, Validators.email]],
+      username: ['', Validators.required],
       pwGroup: this.fb.group({
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
       }, {validator: comparePassword}),
-      country: ['', Validators.required],
-      age: ['', [Validators.required, Validators.min(18)]],
-      gender: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.pattern(/^\+84\d{9,10}$/)]]
     });
   }
 
   onSubmit() {
     console.log('register');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/api/login']);
     if (this.registerForm.invalid) {
       return;
     }
@@ -46,7 +43,7 @@ export class RegisterComponent implements OnInit {
       .pipe()
       .subscribe(
         data => {
-          this.router.navigate(['/login']);
+          this.router.navigate(['/api/login']);
         },
         error => {
           console.log('error');
