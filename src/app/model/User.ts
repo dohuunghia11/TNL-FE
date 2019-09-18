@@ -7,4 +7,5 @@ export interface User {
   address: string;
   email: string;
   avatar: string;
+  type: 'user';
 }
