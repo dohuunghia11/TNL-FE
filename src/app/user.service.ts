@@ -8,23 +8,16 @@ import {User} from './model/User';
 })
 export class UserService {
 
-  private readonly API_URL = 'http://localhost:8080/api/user';
+  private readonly API_URL = 'http://localhost:8080';
 
   constructor(private httpClient: HttpClient) {
   }
 
-  register(user: Partial<User>): Observable<User> {
-    return this.httpClient.post<User>(this.API_URL, user);
+  registerGuest(user: Partial<User>): Observable<any> {
+    return this.httpClient.post<any>(this.API_URL + '/api/sign-up', user);
   }
 
-  update(user: User): Observable<User> {
-    return this.httpClient.put<User>(`${this.API_URL}/${user.id}`, user);
-  }
-
-  getById(id: number): Observable<User> {
-    return this.httpClient.get<User>(`${this.API_URL}/${id}`);
-  }
-  delete(id: number): Observable<User> {
-    return this.httpClient.delete<User>(`${this.API_URL}/${id}`);
+  registerHost(user: Partial<User>): Observable<any> {
+    return this.httpClient.post<any>(this.API_URL + '/api/host/sign-up', user);
   }
 }
