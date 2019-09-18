@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
             this.success = next.success;
             this.message = next.message;
             alert('Đăng ký tài khoản thành công');
-            this.router.navigateByUrl('/api/login');
+            this.router.navigateByUrl('/home-for-host');
           },
           error => {
             console.log(error);

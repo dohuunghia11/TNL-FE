@@ -21,6 +21,8 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
 import { FooterTopComponent } from './footer-top/footer-top.component';
 import {AuthHttpInterceptorService} from './auth-http-interceptor.service';
 import { HomeForHostComponent } from './home-for-host/home-for-host.component';
+import { CreateApartmentComponent } from './create-apartment/create-apartment.component';
+import { HeaderForHostComponent } from './header-for-host/header-for-host.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDiU5Zzun5XS8UiQJMCcY9gwYEb4MFTbPs',
@@ -45,7 +47,9 @@ const firebaseConfig = {
     RegisterComponent,
     RegisterHostComponent,
     FooterTopComponent,
-    HomeForHostComponent
+    HomeForHostComponent,
+    CreateApartmentComponent,
+    HeaderForHostComponent
   ],
   imports: [
     BrowserModule,
