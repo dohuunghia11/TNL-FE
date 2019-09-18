@@ -39,18 +39,18 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     console.log('register');
     this.router.navigate(['/login']);
-    // if (this.registerForm.invalid) {
-    //   return;
-    // }
-    // this.userService.register(this.registerForm.value)
-    //   .pipe()
-    //   .subscribe(
-    //     data => {
-    //       this.router.navigate(['/login']);
-    //     },
-    //     error => {
-    //       console.log('error');
-    //     }
-    //   );
+    if (this.registerForm.invalid) {
+      return;
+    }
+    this.userService.register(this.registerForm.value)
+      .pipe()
+      .subscribe(
+        data => {
+          this.router.navigate(['/login']);
+        },
+        error => {
+          console.log('error');
+        }
+      );
   }
 }
