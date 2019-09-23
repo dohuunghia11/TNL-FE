@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {AuthenticationService} from '../authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  username: string;
+  constructor(private router: Router,
+              private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
+    this.username = localStorage.getItem('currentUser');
   }
 
+  logout() {
+    localStorage.clear();
+  }
 }

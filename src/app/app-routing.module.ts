@@ -6,7 +6,6 @@ import {ApartmentDetailComponent} from './apartment-detail/apartment-detail.comp
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {RegisterHostComponent} from './register-host/register-host.component';
-import {UploadFileComponent} from './upload-file/upload-file.component';
 import {HomeForHostComponent} from './home-for-host/home-for-host.component';
 import {CreateApartmentComponent} from './create-apartment/create-apartment.component';
 
@@ -17,7 +16,7 @@ const routes: Routes = [
   {path: 'api/login', component: LoginComponent},
   {path: 'api/sign-up', component: RegisterComponent},
   {path: 'api/host/sign-up', component: RegisterHostComponent},
-  {path: 'upload', component: UploadFileComponent},
+  // {path: 'upload', component: UploadFileComponent},
   {path: 'home-for-host', component: HomeForHostComponent},
   {path: 'create-apartment', component: CreateApartmentComponent},
   {path: '**', redirectTo: '/apartments', pathMatch: 'full'}

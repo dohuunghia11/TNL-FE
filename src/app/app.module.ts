@@ -23,16 +23,8 @@ import {AuthHttpInterceptorService} from './auth-http-interceptor.service';
 import { HomeForHostComponent } from './home-for-host/home-for-host.component';
 import { CreateApartmentComponent } from './create-apartment/create-apartment.component';
 import { HeaderForHostComponent } from './header-for-host/header-for-host.component';
+import {environment} from '../environments/environment';
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyDiU5Zzun5XS8UiQJMCcY9gwYEb4MFTbPs',
-  authDomain: 'tnl-fe-apartment.firebaseapp.com',
-  databaseURL: 'https://tnl-fe-apartment.firebaseio.com',
-  projectId: 'tnl-fe-apartment',
-  storageBucket: '',
-  messagingSenderId: '5192489076',
-  appId: '1:5192489076:web:08c73bf7d141e990ae9921'
-};
 
 @NgModule({
   declarations: [
@@ -59,7 +51,7 @@ const firebaseConfig = {
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule
   ],
   providers: [

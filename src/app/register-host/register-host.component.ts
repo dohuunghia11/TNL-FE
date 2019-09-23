@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {UserService} from '../user.service';
+import {User} from '../model/User';
 
 function comparePassword(c: AbstractControl) {
   const v = c.value;
@@ -18,37 +19,46 @@ function comparePassword(c: AbstractControl) {
 export class RegisterHostComponent implements OnInit {
 
   registerForm: FormGroup;
+  user: Partial<User>;
 
   constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
   }
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      name: ['', [Validators.required, Validators.email]],
-      username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       pwGroup: this.fb.group({
         password: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
+        confirmPassword: ['']
       }, {validator: comparePassword}),
+      role: ['', Validators.required],
+      name: ['', Validators.required],
+      avatar: ['', Validators.required],
+      username: ['', Validators.required],
     });
+
+    this.user = {
+      username: '',
+      password: '',
+      name: 'nghia' + Math.random() * 1000,
+      email: 'nghia' + Math.random() * 1000 + '@gmai.com',
+    };
   }
 
   onSubmit() {
-    console.log('register');
-    this.router.navigate(['/login']);
-    if (this.registerForm.invalid) {
-      return;
-    }
-    this.userService.register(this.registerForm.value)
-      .pipe()
+    // if (this.registerForm.invalid) {
+    //   return;
+    // }
+    console.log(this.registerForm.value);
+    this.userService.registerHost(this.user)
       .subscribe(
         data => {
-          this.router.navigate(['/login']);
+          console.log('succsess');
+          this.router.navigateByUrl('/api/login');
         },
         error => {
           console.log('error');
         }
       );
   }
-
 }

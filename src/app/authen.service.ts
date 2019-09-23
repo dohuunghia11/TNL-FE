@@ -11,7 +11,7 @@ export class AuthenService {
   }
 
   authenticate(username, password) {
-    return this.httpClient.post<any>('http://localhost:8080/login', {username, password}).pipe(
+    return this.httpClient.post<any>('http://localhost:8080/api/login', {username, password}).pipe(
       map(userdata => {
         sessionStorage.setItem('username', username);
         const tokenStr = 'Bearer ' + userdata.token;

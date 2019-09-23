@@ -11,13 +11,20 @@
       <li class="nav-item">
         <a class="nav-link btn btn-outline-warning text-warning p-0 mt-2" routerLink="/api/host/sign-up">Trở thành chủ nhà</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!username">
         <a class="nav-link text-dark " routerLink="/api/sign-up">Đăng ký</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-dark " routerLink="/api/login">Đăng nhập</a>
+        <div *ngIf="username">
+          <a class="nav-link text-dark" href="#">{{username}}</a>
+        </div>
+        <div *ngIf="!username">
+          <a class="nav-link text-dark " routerLink="/api/login">Đăng nhập</a>
+        </div>
       </li>
-
+      <li class="nav-item" *ngIf="username">
+        <a routerLink="/logout" class="nav-link text-dark" (click)="logout()">Đăng xuất</a>
+      </li>
       <!-- Dropdown -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-dark " href="#" id="navbardrop" data-toggle="dropdown">
