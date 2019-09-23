@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Apartment} from '../model/Apartment';
 import {Router} from '@angular/router';
+import {ApartmentService} from '../apartment.service';
 
 @Component({
   selector: 'app-create-apartment',
@@ -13,7 +14,8 @@ export class CreateApartmentComponent implements OnInit {
   apartmentForm: FormGroup;
   apartment: Partial<Apartment>;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private service: ApartmentService) {
     this.apartmentForm = new FormGroup({
       name: new FormControl(''),
       category: new FormControl(''),
@@ -47,6 +49,8 @@ export class CreateApartmentComponent implements OnInit {
 
   createApartment() {
     console.log(this.apartment);
-    this.router.navigate(['/home-for-host']);
+    this.service.createApartment(this.apartment).subscribe(() => {
+      this.router.navigate(['/home-for-host']);
+    }, error => console.log(error) );
   }
 }
