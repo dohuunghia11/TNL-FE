@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'api/host/sign-up', component: RegisterHostComponent},
   // {path: 'upload', component: UploadFileComponent},
   {path: 'home-for-host', component: HomeForHostComponent},
-  {path: 'create-apartment', component: CreateApartmentComponent},
+  {path: 'api/create-apartment', component: CreateApartmentComponent},
   {path: '**', redirectTo: '/apartments', pathMatch: 'full'}
 ];
 @NgModule({
