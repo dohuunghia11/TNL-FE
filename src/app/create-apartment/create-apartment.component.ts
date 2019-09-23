@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Apartment} from '../model/Apartment';
 import {Router} from '@angular/router';
 import {ApartmentService} from '../apartment.service';
@@ -17,16 +17,16 @@ export class CreateApartmentComponent implements OnInit {
   constructor(private router: Router,
               private service: ApartmentService) {
     this.apartmentForm = new FormGroup({
-      name: new FormControl(''),
-      category: new FormControl(''),
-      address: new FormControl(''),
+      name: new FormControl('', Validators.required),
+      category: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
       numberOfRooms: new FormControl(''),
       numberOfBathrooms: new FormControl(''),
-      price: new FormControl(''),
-      description: new FormControl(''),
-      image: new FormControl(''),
+      price: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      image: new FormControl('', Validators.required),
       rate: new FormControl(''),
-      area: new FormControl('')
+      area: new FormControl('', Validators.required)
     });
     this.apartment = {
       name: '',

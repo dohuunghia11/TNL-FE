@@ -24,7 +24,9 @@ export class AuthenticationService {
       Authorization: `Bearer ${this.token}`
     });
   }
-
+  login(loginForm: FormGroup): Observable<any> {
+    return this.httpClient.post(this.API_URL, JSON.stringify(loginForm), httpOptions);
+  }
   // ko can phai su dung JSON.stringigy de convert tu oject sang json
   authenticate(user): Observable<any> {
     return this.httpClient.post<any>(this.API_URL, user);

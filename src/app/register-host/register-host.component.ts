@@ -20,45 +20,50 @@ export class RegisterHostComponent implements OnInit {
 
   registerForm: FormGroup;
   user: Partial<User>;
-
-  constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
+  avatarDefault = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRTUteh9yefJkzgW2Pa1jEMEs8YKY5cfat09zZZdeyX-V-Vhpe';
+  success: boolean;
+  message: string;
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
     this.registerForm = this.fb.group({
+      id: [Math.round(Math.random() * 100)],
+      name: [''],
       email: ['', [Validators.required, Validators.email]],
       pwGroup: this.fb.group({
         password: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['']
+        confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
       }, {validator: comparePassword}),
-      role: ['', Validators.required],
-      name: ['', Validators.required],
-      avatar: ['', Validators.required],
-      username: ['', Validators.required],
+      avatar: [''],
+      username: ['', [Validators.required, Validators.minLength(3),
+        Validators.maxLength(50), Validators.pattern(/^[_A-z0-9]*[_A-z0-9]*$/)]],
     });
-
     this.user = {
-      username: '',
+      id: Math.round(Math.random() * 1000),
+      name: '',
+      email: '',
       password: '',
-      name: 'nghia' + Math.random() * 1000,
-      email: 'nghia' + Math.random() * 1000 + '@gmai.com',
+      avatar: this.avatarDefault,
+      username: ''
     };
   }
 
   onSubmit() {
-    // if (this.registerForm.invalid) {
-    //   return;
-    // }
-    console.log(this.registerForm.value);
-    this.userService.registerHost(this.user)
-      .subscribe(
-        data => {
-          console.log('succsess');
-          this.router.navigateByUrl('/api/login');
-        },
-        error => {
-          console.log('error');
-        }
-      );
+    console.log(this.user);
+    if (this.registerForm.valid) {
+      this.userService.registerGuest(this.user)
+        .subscribe(
+          next => {
+            this.success = next.success;
+            this.message = next.message;
+            alert('Đăng ký tài khoản thành công');
+            this.router.navigateByUrl('/home-for-host');
+          },
+          error => {
+            console.log(error);
+          }
+        );
+    }
   }
 }

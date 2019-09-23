@@ -14,8 +14,12 @@
         </div>
         <div class="form-group">
           <label>Category: </label>
-          <input type="text" class="form-control" [(ngModel)]="apartment.category" formControlName="category"
-                 placeholder="Enter category">
+          <select class="form-control form-control-lg" [(ngModel)]="apartment.category" formControlName="category">
+            <option value="home">HOME</option>
+            <option value="villa">VILLA</option>
+            <option value="resort">RESORT</option>
+            <option value="hotel">HOTEL</option>
+          </select>
         </div>
         <div class="form-group">
           <label>Address: </label>
@@ -37,15 +41,27 @@
           <input type="number" class="form-control" [(ngModel)]="apartment.price" formControlName="price"
                  placeholder="Enter price">
         </div>
+        <div class="alert alert-danger" role="alert"
+             *ngIf="apartmentForm.get('price').invalid && apartmentForm.get('price').touched">
+          Price is required!
+        </div>
         <div class="form-group">
           <label>Description: </label>
           <textarea class="form-control" [(ngModel)]="apartment.description" formControlName="description"
                     placeholder="Enter description"></textarea>
         </div>
+        <div class="alert alert-danger" role="alert"
+             *ngIf="apartmentForm.get('description').invalid && apartmentForm.get('description').touched">
+          Description is required!
+        </div>
         <div class="form-group">
           <label>Area: </label>
           <input type="number" class="form-control" [(ngModel)]="apartment.area" formControlName="area"
                  placeholder="Enter area">
+        </div>
+        <div class="alert alert-danger" role="alert"
+             *ngIf="apartmentForm.get('area').invalid && apartmentForm.get('area').touched">
+          Area is required!
         </div>
         <div style="margin-bottom: 20px">
           <button type="submit" class="btn btn-primary">Thêm chỗ ở</button>
