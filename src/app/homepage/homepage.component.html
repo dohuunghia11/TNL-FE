@@ -31,9 +31,10 @@
           <div class="card-body text-center">
             <a routerLink="/apartments/{{apartment.id}}">
               <h5 class="card-title">{{apartment.name}}</h5></a>
-            <p class="card-text">{{apartment.price}}</p>
+            <p class="card-text">{{apartment.price}} $/đêm</p>
             <p class="card-text">{{apartment.address}}</p>
-            <p class="card-text">{{apartment.rate}}</p>
+            <p class="card-text">Đánh giá: {{apartment.rate}}/5</p>
+            <p class="card-text">{{apartment.numberOfBathrooms}} phòng tắm + {{apartment.numberOfRooms}} phòng ngủ</p>
           </div>
         </div>
       </div>
