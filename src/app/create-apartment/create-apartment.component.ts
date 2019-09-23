@@ -39,11 +39,14 @@ export class CreateApartmentComponent implements OnInit {
       area: '0'
     };
   }
-
+  onChange($event) {
+    this.apartment.image = $event;
+  }
   ngOnInit() {
   }
 
-  createHouse() {
+  createApartment() {
+    console.log(this.apartment);
     this.router.navigate(['/home-for-host']);
   }
 }

@@ -4,42 +4,57 @@
     style="background-color: black; border-radius: 10px; text-align: center; color: white; margin-top: 20px; margin-bottom: 20px; font-size: x-large; margin-left: 5px; margin-right:5px">
     Đăng ký chỗ ở
   </div>
-  <div class="container">
-    <form>
-      <div class="form-group">
-        <label>House Name: </label>
-        <input type="text" class="form-control" placeholder="Enter house name">
-      </div>
-      <div class="form-group">
-        <label>House Type: </label>
-        <input type="text" class="form-control" placeholder="Enter house Type">
-      </div>
-      <div class="form-group">
-        <label>Address: </label>
-        <input type="text" class="form-control" placeholder="Enter address">
-      </div>
-      <div class="form-group">
-        <label>Bedroom number: </label>
-        <input type="text" class="form-control" placeholder="Enter room number">
-      </div>
-      <div class="form-group">
-        <label>Bathroom Number: </label>
-        <input type="text" class="form-control" placeholder="Enter bathroom number">
-      </div>
-      <div class="form-group">
-        <label>Price: </label>
-        <input type="text" class="form-control" placeholder="Enter price">
-      </div>
-      <div class="form-group">
-        <label>Description: </label>
-        <input type="text" class="form-control" placeholder="Enter description">
-      </div>
-      <div class="form-group">
-        <label>Area: </label>
-        <input type="text" class="form-control" placeholder="Enter area">
-      </div>
-      <button type="submit" class="btn btn-primary" (click)="createHouse()">Submit</button>
-    </form>
+  <div class="container-fluid row">
+    <div class="col-8">
+      <form (ngSubmit)="createApartment()" [formGroup]="apartmentForm">
+        <div class="form-group">
+          <label>Name: </label>
+          <input type="text" class="form-control" [(ngModel)]="apartment.name" formControlName="name"
+                 placeholder="Enter name">
+        </div>
+        <div class="form-group">
+          <label>Category: </label>
+          <input type="text" class="form-control" [(ngModel)]="apartment.category" formControlName="category"
+                 placeholder="Enter category">
+        </div>
+        <div class="form-group">
+          <label>Address: </label>
+          <input type="text" class="form-control" [(ngModel)]="apartment.address" formControlName="address"
+                 placeholder="Enter address">
+        </div>
+        <div class="form-group">
+          <label>Bedroom number: </label>
+          <input type="number" class="form-control" [(ngModel)]="apartment.numberOfRooms" formControlName="numberOfRooms"
+                 placeholder="Enter bedroom number">
+        </div>
+        <div class="form-group">
+          <label>Bathroom Number: </label>
+          <input type="number" class="form-control" [(ngModel)]="apartment.numberOfBathrooms" formControlName="numberOfBathrooms"
+                 placeholder="Enter bathroom number">
+        </div>
+        <div class="form-group">
+          <label>Price: </label>
+          <input type="number" class="form-control" [(ngModel)]="apartment.price" formControlName="price"
+                 placeholder="Enter price">
+        </div>
+        <div class="form-group">
+          <label>Description: </label>
+          <textarea class="form-control" [(ngModel)]="apartment.description" formControlName="description"
+                    placeholder="Enter description"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Area: </label>
+          <input type="number" class="form-control" [(ngModel)]="apartment.area" formControlName="area"
+                 placeholder="Enter area">
+        </div>
+        <div style="margin-bottom: 20px">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-4" style="margin-bottom: 10px">
+      <app-upload-file (giveURLtoCreate)="onChange($event)"></app-upload-file>
+    </div>
   </div>
   <app-footer></app-footer>
 </div>
