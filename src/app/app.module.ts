@@ -26,6 +26,11 @@ import { HeaderForHostComponent } from './header-for-host/header-for-host.compon
 import {environment} from '../environments/environment';
 import { ListApartmentComponent } from './list-apartment/list-apartment.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @NgModule({
@@ -56,7 +61,12 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
     FormsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     {

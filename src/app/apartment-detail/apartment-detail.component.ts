@@ -21,7 +21,9 @@ export class ApartmentDetailComponent implements OnInit {
     description: '',
     images: [],
     rate: '',
-    area: ''
+    area: '',
+    startDate: null,
+    endDate: null
   };
 
   time: Date = new Date();
