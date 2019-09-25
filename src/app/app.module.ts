@@ -24,6 +24,8 @@ import { HomeForHostComponent } from './home-for-host/home-for-host.component';
 import { CreateApartmentComponent } from './create-apartment/create-apartment.component';
 import { HeaderForHostComponent } from './header-for-host/header-for-host.component';
 import {environment} from '../environments/environment';
+import { ListApartmentComponent } from './list-apartment/list-apartment.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import {environment} from '../environments/environment';
     FooterTopComponent,
     HomeForHostComponent,
     CreateApartmentComponent,
-    HeaderForHostComponent
+    HeaderForHostComponent,
+    ListApartmentComponent,
+    DatePickerComponent
   ],
   imports: [
     BrowserModule,

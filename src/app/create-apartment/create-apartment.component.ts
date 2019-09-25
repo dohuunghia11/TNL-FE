@@ -15,7 +15,7 @@ export class CreateApartmentComponent implements OnInit {
   apartment: Partial<Apartment>;
 
   constructor(private router: Router,
-              private service: ApartmentService) {
+              private apartmentService: ApartmentService) {
     this.apartmentForm = new FormGroup({
       name: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
@@ -24,7 +24,7 @@ export class CreateApartmentComponent implements OnInit {
       numberOfBathrooms: new FormControl(''),
       price: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
-      image: new FormControl('', Validators.required),
+      images: new FormControl('', Validators.required),
       rate: new FormControl(''),
       area: new FormControl('', Validators.required)
     });
@@ -36,21 +36,23 @@ export class CreateApartmentComponent implements OnInit {
       numberOfBathrooms: '0',
       price: '0',
       description: '',
-      image: '',
+      images: ['https://previews.123rf.com/images/anthonycz/anthonycz1208/anthonycz120800119/15033060-house-icon.jpg'],
       rate: '0',
       area: '0'
     };
   }
-  onChange($event) {
-    this.apartment.image = $event;
-  }
+  // onChange($event) {
+  //   this.apartment.images = $event;
+  // }
   ngOnInit() {
   }
 
   createApartment() {
+    this.apartment.images = this.apartmentService.imageUrls;
     console.log(this.apartment);
-    this.service.createApartment(this.apartment).subscribe(() => {
+    this.apartmentService.createApartment(this.apartment).subscribe(next => {
+      console.log(next);
       this.router.navigate(['/home-for-host']);
-    }, error => console.log(error) );
+    }, error => console.log(error));
   }
 }

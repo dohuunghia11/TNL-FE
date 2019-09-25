@@ -9,5 +9,5 @@ export interface Apartment {
   price: string;
   area: string;
   rate: string;
-  image: string;
+  images: string[];
 }

@@ -87,7 +87,7 @@ export class LoginComponent implements OnInit {
     this.authenService.login(this.loginForm.value).subscribe(
       next => {
         localStorage.setItem('token', next.token);
-        localStorage.setItem('username', next.username);
+        localStorage.setItem('currentUser', next.username);
         this.authenService.token = next.token;
         this.authenService.header = new HttpHeaders(
           {
@@ -96,11 +96,12 @@ export class LoginComponent implements OnInit {
           }
         );
         if (next.token) {
-          this.router.navigateByUrl('');
+          this.router.navigateByUrl('/home-for-host');
         }
-        console.log(next.token);
-      }
-    );
-
+      },
+      error1 => {
+        this.router.navigateByUrl('/api/login');
+        console.log(error1);
+      });
   }
 }

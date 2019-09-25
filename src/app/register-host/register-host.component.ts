@@ -52,7 +52,7 @@ export class RegisterHostComponent implements OnInit {
   onSubmit() {
     console.log(this.user);
     if (this.registerForm.valid) {
-      this.userService.registerGuest(this.user)
+      this.userService.registerHost(this.user)
         .subscribe(
           next => {
             this.success = next.success;

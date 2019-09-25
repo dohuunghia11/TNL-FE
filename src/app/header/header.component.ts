@@ -13,11 +13,11 @@ export class HeaderComponent implements OnInit {
               private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
-    this.username = localStorage.getItem('username');
+    this.username = localStorage.getItem('currentUser');
   }
 
   logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
+    localStorage.clear();
+    this.router.navigateByUrl('/api/login');
   }
 }
