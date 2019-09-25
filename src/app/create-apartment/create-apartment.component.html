@@ -9,12 +9,12 @@
       <form (ngSubmit)="createApartment()" [formGroup]="apartmentForm">
         <div class="form-group">
           <label>Name: </label>
-          <input type="text" class="form-control" [(ngModel)]="apartment.name" formControlName="name"
+          <input type="text" class="form-control" [(ngModel)]="apartment.data.name" formControlName="name"
                  placeholder="Enter name">
         </div>
         <div class="form-group">
           <label>Category: </label>
-          <select class="form-control form-control-lg" [(ngModel)]="apartment.category" formControlName="category">
+          <select class="form-control form-control-lg" [(ngModel)]="apartment.data.category" formControlName="category">
             <option value="home">HOME</option>
             <option value="villa">VILLA</option>
             <option value="resort">RESORT</option>
@@ -23,22 +23,22 @@
         </div>
         <div class="form-group">
           <label>Address: </label>
-          <input type="text" class="form-control" [(ngModel)]="apartment.address" formControlName="address"
+          <input type="text" class="form-control" [(ngModel)]="apartment.data.address" formControlName="address"
                  placeholder="Enter address">
         </div>
         <div class="form-group">
           <label>Bedroom number: </label>
-          <input type="number" class="form-control" [(ngModel)]="apartment.numberOfRooms" formControlName="numberOfRooms"
+          <input type="number" class="form-control" [(ngModel)]="apartment.data.numberOfRooms" formControlName="numberOfRooms"
                  placeholder="Enter bedroom number">
         </div>
         <div class="form-group">
           <label>Bathroom Number: </label>
-          <input type="number" class="form-control" [(ngModel)]="apartment.numberOfBathrooms" formControlName="numberOfBathrooms"
+          <input type="number" class="form-control" [(ngModel)]="apartment.data.numberOfBathrooms" formControlName="numberOfBathrooms"
                  placeholder="Enter bathroom number">
         </div>
         <div class="form-group">
           <label>Price: </label>
-          <input type="number" class="form-control" [(ngModel)]="apartment.price" formControlName="price"
+          <input type="number" class="form-control" [(ngModel)]="apartment.data.price" formControlName="price"
                  placeholder="Enter price">
         </div>
         <div class="alert alert-danger" role="alert"
@@ -47,7 +47,7 @@
         </div>
         <div class="form-group">
           <label>Description: </label>
-          <textarea class="form-control" [(ngModel)]="apartment.description" formControlName="description"
+          <textarea class="form-control" [(ngModel)]="apartment.data.description" formControlName="description"
                     placeholder="Enter description"></textarea>
         </div>
         <div class="alert alert-danger" role="alert"
@@ -56,7 +56,7 @@
         </div>
         <div class="form-group">
           <label>Area: </label>
-          <input type="number" class="form-control" [(ngModel)]="apartment.area" formControlName="area"
+          <input type="number" class="form-control" [(ngModel)]="apartment.data.area" formControlName="area"
                  placeholder="Enter area">
         </div>
         <div class="alert alert-danger" role="alert"
@@ -64,7 +64,7 @@
           Area is required!
         </div>
         <div style="margin-bottom: 20px">
-          <button type="submit" class="btn btn-primary">Thêm chỗ ở</button>
+          <input type="submit" class="btn btn-outline-primary" value="Thêm chỗ ở">
         </div>
       </form>
     </div>

@@ -22,13 +22,13 @@ export class CreateApartmentComponent implements OnInit {
       name: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
-      numberOfRooms: new FormControl(''),
-      numberOfBathrooms: new FormControl(''),
-      price: new FormControl('', Validators.required),
+      numberOfRooms: new FormControl('', Validators.min(0)),
+      numberOfBathrooms: new FormControl('', Validators.min(0)),
+      price: new FormControl('', Validators.min(0)),
       description: new FormControl('', Validators.required),
       // images: new FormControl('', Validators.required),
       rate: new FormControl(''),
-      area: new FormControl('', Validators.required)
+      area: new FormControl('', Validators.min(0))
     });
 //     this.apartment = {
 //       name: '',
@@ -74,33 +74,26 @@ export class CreateApartmentComponent implements OnInit {
   }
 
   onChange($event) {
-    this.apartment.data.images = $event;
+    this.apartment.data.imageUrls = $event;
   }
 
-  createHouse() {
-    console.log(this.apartment);
-    this.apartmentService.createApartment(this.apartment).subscribe(() => {
-      this.router.navigate(['/api/home-for-host']);
-      this.apartment.data = {
-        id: 0,
-        name: '',
-        category: '',
-        address: '',
-        numberOfRooms: '',
-        numberOfBathrooms: '',
-        price: '',
-        description: '',
-        images: ['https://previews.123rf.com/images/anthonycz/anthonycz1208/anthonycz120800119/15033060-house-icon.jpg'],
-        rate: '',
-        area: '',
-        status: '',
-        user: '',
-        startDate: '',
-        endDate: ''
-      };
-    }, error => {
-      console.log(error);
-      this.router.navigate(['/api/apartments']);
-    });
+  createApartment() {
+    if (this.apartmentForm.valid) {
+      console.log(this.apartment);
+      const imageApartments: ImageOfApartment[] = [];
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < this.apartmentService.imageUrls.length; i++) {
+        const imageApartment = new ImageOfApartment();
+        imageApartment.imageUrl = this.apartmentService.imageUrls[i];
+        imageApartment.apartment = this.apartment;
+        imageApartments.push(imageApartment);
+      }
+      this.apartmentService.createApartment(imageApartments).subscribe(next => {
+        console.log(next);
+        this.router.navigate(['/home-for-host']);
+      }, error => console.log(error));
+    } else {
+      alert('Thông tin nhà chưa đủ hoặc không hợp lệ. Vui lòng kiểm tra lại.');
+    }
   }
 }

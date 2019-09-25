@@ -25,7 +25,7 @@ export class EditApartmentComponent implements OnInit {
       numberOfBathrooms: new FormControl(''),
       price: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
-      images: new FormControl('', [Validators.required]),
+      imageUrls: new FormControl('', [Validators.required]),
       area: new FormControl('', [Validators.required]),
       startDate: new FormControl(),
       endDate: new FormControl()
@@ -39,7 +39,7 @@ export class EditApartmentComponent implements OnInit {
       numberOfBathrooms: '',
       price: '',
       description: '',
-      images: [],
+      imageUrls: [],
       rate: '',
       area: '',
       startDate: null,

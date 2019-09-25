@@ -10,7 +10,7 @@ export interface Apartment {
   price: string;
   area: string;
   rate: string;
-  images: string[];
+  imageUrls: string[];
   startDate: string;
   endDate: string;
   status: string;

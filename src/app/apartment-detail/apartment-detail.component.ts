@@ -38,7 +38,7 @@ export class ApartmentDetailComponent implements OnInit {
             numberOfBathrooms: data.data.numberOfBathrooms,
             price: data.data.price,
             description: data.data.description,
-            images: data.data.images,
+            imageUrls: data.data.imageUrls,
             rate: data.data.rate,
             area: data.data.area,
             status: data.data.status,
