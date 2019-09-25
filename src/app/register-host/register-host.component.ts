@@ -41,29 +41,41 @@ export class RegisterHostComponent implements OnInit {
     });
     this.user = {
       id: Math.round(Math.random() * 1000),
-      name: '',
+      username: '',
+      name: 'host',
       email: '',
       password: '',
       avatar: this.avatarDefault,
-      username: ''
     };
   }
 
   onSubmit() {
-    console.log(this.user);
-    if (this.registerForm.valid) {
-      this.userService.registerHost(this.user)
-        .subscribe(
-          next => {
-            this.success = next.success;
-            this.message = next.message;
-            alert('Đăng ký tài khoản thành công');
-            this.router.navigateByUrl('/home-for-host');
-          },
-          error => {
-            console.log(error);
-          }
-        );
-    }
+  //   console.log(this.user);
+  //   if (this.registerForm.valid) {
+  //     this.userService.registerHost(this.user)
+  //       .subscribe(
+  //         next => {
+  //           this.success = next.success;
+  //           this.message = next.message;
+  //           alert('Đăng ký tài khoản thành công');
+  //           this.router.navigateByUrl('/home-for-host');
+  //         },
+  //         error => {
+  //           console.log(error);
+  //         }
+  //       );
+  //   }
+  // }
+    console.log(this.registerForm.value);
+    this.userService.registerHost(this.user)
+      .subscribe(
+        data => {
+          console.log('succsess');
+          this.router.navigateByUrl('/api/login');
+        },
+        error => {
+          console.log('error');
+        }
+      );
   }
 }

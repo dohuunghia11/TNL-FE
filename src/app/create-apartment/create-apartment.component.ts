@@ -3,6 +3,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Apartment} from '../model/Apartment';
 import {Router} from '@angular/router';
 import {ApartmentService} from '../apartment.service';
+import {ImageOfApartment} from '../model/ImageOfApartment';
+import {StandardResponse} from '../model/StandardResponse';
 
 @Component({
   selector: 'app-create-apartment',
@@ -12,7 +14,7 @@ import {ApartmentService} from '../apartment.service';
 export class CreateApartmentComponent implements OnInit {
 
   apartmentForm: FormGroup;
-  apartment: Partial<Apartment>;
+  apartment: Partial<StandardResponse>;
 
   constructor(private router: Router,
               private apartmentService: ApartmentService) {
@@ -24,37 +26,81 @@ export class CreateApartmentComponent implements OnInit {
       numberOfBathrooms: new FormControl(''),
       price: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
-      images: new FormControl('', Validators.required),
+      // images: new FormControl('', Validators.required),
       rate: new FormControl(''),
       area: new FormControl('', Validators.required)
     });
-    this.apartment = {
-      name: '',
-      category: '',
-      address: '',
-      numberOfRooms: '0',
-      numberOfBathrooms: '0',
-      price: '0',
-      description: '',
-      images: ['https://previews.123rf.com/images/anthonycz/anthonycz1208/anthonycz120800119/15033060-house-icon.jpg'],
-      rate: '0',
-      area: '0',
-      startDate: null,
-      endDate: null
-    };
+//     this.apartment = {
+//       name: '',
+//       category: '',
+//       address: '',
+//       numberOfRooms: '0',
+//       numberOfBathrooms: '0',
+//       price: '0',
+//       description: '',
+//       // images: ['https://previews.123rf.com/images/anthonycz/anthonycz1208/anthonycz120800119/15033060-house-icon.jpg'],
+//       rate: '0',
+//       area: '0',
+//       startDate: null,
+//       endDate: null
+//     };
+//   }
+//   // onChange($event) {
+//   //   this.apartment.images = $event;
+//   // }
+//   ngOnInit() {
+//   }
+//
+//   createApartment() {
+//     // this.apartment.images = this.apartmentService.imageUrls;
+//     console.log(this.apartment);
+//     const imageApartments: ImageOfApartment[] = [];
+//     // tslint:disable-next-line:prefer-for-of
+//     for (let i = 0; i < this.apartmentService.imageUrls.length; i++) {
+//       const imageApartment = new ImageOfApartment();
+//       imageApartment.imageUrl = this.apartmentService.imageUrls[i];
+//       imageApartment.apartment = this.apartment;
+//       imageApartments.push(imageApartment);
+//     }
+//     this.apartmentService.createApartment(imageApartments).subscribe(next => {
+//       console.log(next);
+//       this.router.navigate(['/home-for-host']);
+//     }, error => console.log(error));
+//   }
+// }
   }
-  // onChange($event) {
-  //   this.apartment.images = $event;
-  // }
+
   ngOnInit() {
   }
 
-  createApartment() {
-    this.apartment.images = this.apartmentService.imageUrls;
+  onChange($event) {
+    this.apartment.data.images = $event;
+  }
+
+  createHouse() {
     console.log(this.apartment);
-    this.apartmentService.createApartment(this.apartment).subscribe(next => {
-      console.log(next);
-      this.router.navigate(['/home-for-host']);
-    }, error => console.log(error));
+    this.apartmentService.createApartment(this.apartment).subscribe(() => {
+      this.router.navigate(['/api/home-for-host']);
+      this.apartment.data = {
+        id: 0,
+        name: '',
+        category: '',
+        address: '',
+        numberOfRooms: '',
+        numberOfBathrooms: '',
+        price: '',
+        description: '',
+        images: ['https://previews.123rf.com/images/anthonycz/anthonycz1208/anthonycz120800119/15033060-house-icon.jpg'],
+        rate: '',
+        area: '',
+        status: '',
+        user: '',
+        startDate: '',
+        endDate: ''
+      };
+    }, error => {
+      console.log(error);
+      this.router.navigate(['/api/apartments']);
+    });
   }
 }

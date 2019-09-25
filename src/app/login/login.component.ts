@@ -82,21 +82,37 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log('Log in');
+  //   console.log('Log in');
+  //   console.log(JSON.stringify(this.loginForm.value));
+  //   this.authenService.login(this.loginForm.value).subscribe(
+  //     next => {
+  //       localStorage.setItem('token', next.token);
+  //       localStorage.setItem('currentUser', next.username);
+  //       this.authenService.token = next.token;
+  //       this.authenService.header = new HttpHeaders(
+  //         {
+  //           Authorization: `Bearer ${this.authenService.token}`,
+  //           'Content-Type': 'application/json'
+  //         }
+  //       );
+  //       if (next.token) {
+  //         this.router.navigateByUrl('/home-for-host');
+  //       }
+  //     },
+  //     error1 => {
+  //       this.router.navigateByUrl('/api/login');
+  //       console.log(error1);
+  //     });
+  // }
     console.log(JSON.stringify(this.loginForm.value));
-    this.authenService.login(this.loginForm.value).subscribe(
+    console.log(this.loginForm.value);
+    this.authenService.authenticate(this.loginForm.value).subscribe(
       next => {
-        localStorage.setItem('token', next.token);
-        localStorage.setItem('currentUser', next.username);
-        this.authenService.token = next.token;
-        this.authenService.header = new HttpHeaders(
-          {
-            Authorization: `Bearer ${this.authenService.token}`,
-            'Content-Type': 'application/json'
-          }
-        );
-        if (next.token) {
-          this.router.navigateByUrl('/home-for-host');
+        localStorage.setItem('token', next.data.token);
+        localStorage.setItem('currentUser', next.data.username);
+        localStorage.setItem('currentName', next.data.name);
+        if (next.data.token) {
+          this.router.navigateByUrl('/api/apartments');
         }
       },
       error1 => {

@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask} from 'angularfire2/storage';
 import {map} from 'rxjs/operators';
 import {ApartmentService} from '../apartment.service';
+import UploadTaskSnapshot = firebase.storage.UploadTaskSnapshot;
 
 @Component({
   selector: 'app-upload-file',
@@ -12,52 +13,49 @@ import {ApartmentService} from '../apartment.service';
 })
 export class UploadFileComponent implements OnInit {
 
-  selectedFile: File;
+  files: File[];
   ref: AngularFireStorageReference;
-  downloadURL: string;
-  @Output()
-  giveURLtoCreate = new EventEmitter<string>();
+  percent = 0;
+  index = 0;
+  btn = 'Upload';
+  totalFile = 0;
 
-  constructor(private httpClient: HttpClient, private afStorage: AngularFireStorage, private apartmentService: ApartmentService) {
+  constructor(private httpClient: HttpClient,
+              private afStorage: AngularFireStorage,
+              private apartmentService: ApartmentService) {
   }
 
   ngOnInit() {
   }
 
   onFileChanged(event) {
-    this.apartmentService.imageUrls = [];
-    console.log(event.target.files);
-    const files = event.target.files;
-    for (const file of files) {
-      this.onUpload(file);
-    }
-    console.log(this.apartmentService.imageUrls);
+    this.files = event.target.files;
+    this.totalFile = this.files.length;
+    this.percent = 0;
+    this.index = 0;
   }
 
-  async onUpload(file: File) {
+  async onUpload() {
     try {
-      const id = Math.random().toString(36).substring(2); // Create a random string
-      this.ref = this.afStorage.ref(id);
-      const snapshot = await this.ref.put(file);
-      const downloadUrl = await snapshot.ref.getDownloadURL();
-      return downloadUrl;
+      this.apartmentService.imageUrls = [];
+      this.index = 1;
+      this.btn = 'Uploading';
+      for (const file of this.files) {
+        const id = Math.random().toString(36).substring(2); // Create a random string
+        this.ref = this.afStorage.ref(id);
+        // await
+        const snapshot: UploadTaskSnapshot = await this.ref.put(file);
+        const downloadUrl = await snapshot.ref.getDownloadURL();
+
+        this.apartmentService.imageUrls.push(downloadUrl);
+        this.percent = Math.round(this.index / this.totalFile * 100);
+        // prevent index++ when index=totalFile
+        this.index = this.index === this.totalFile ? this.index : this.index + 1;
+      }
     } catch (error) {
       console.log(`Failed to upload file and get link - ${error}`);
     }
-
-    // this.ref.put(file)
-    //   .then(snapshot => {
-    //     return snapshot.ref.getDownloadURL();   // Will return a promise with the download link
-    //   })
-    //   .then(downloadURL => {
-    //     this.downloadURL = downloadURL;
-    //     this.giveURLtoCreate.emit(this.downloadURL);
-    //     // console.log(downloadURL);
-    //     return downloadURL;
-    //   })
-    //   .catch(error => {
-    //     // Use to signal error if something goes wrong.
-    //     console.log(`Failed to upload file and get link - ${error}`);
-    //   });
+    console.log(this.apartmentService.imageUrls);
+    this.btn = 'Upload';
   }
 }

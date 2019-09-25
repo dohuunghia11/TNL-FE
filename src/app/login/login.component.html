@@ -13,7 +13,7 @@
              [class.is-invalid]="loginForm.get('password').invalid && (loginForm.controls.password.dirty||loginForm.controls.password.touched)">
     </div>
     <input class="btn btn-primary offset-sm-1 col-sm-4" [disabled]="loginForm.invalid" type="submit" value="Đăng nhập">
-    <a routerLink="/registerUser">
+    <a routerLink="/api/sign-up">
       <button class="btn btn-danger offset-sm-2 col-sm-4 ">Đăng ký</button>
     </a>
     <span class="text-center mt-3 d-block">

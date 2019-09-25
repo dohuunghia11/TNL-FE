@@ -1,24 +1,24 @@
 <app-header></app-header>
 <header class="container shadow" style="max-width:100%;" id="home">
-  <img src="{{apartment.images}}" alt="Architecture" width="100%" height="600">
+  <img src="{{apartmentDetail.data.images}}" alt="Architecture" width="100%" height="600">
 </header>
 
 <div class="container shadow">
   <ul class="breadcrumb shadow">
-    <li class="breadcrumb-item"><a [routerLink]="['']" >Trang chủ</a></li>
-    <li class="breadcrumb-item active"><a [routerLink]="['/apartments, apartment.id']">{{apartment.name}}</a></li>
+    <li class="breadcrumb-item"><a [routerLink]="['/apartments']" >Trang chủ</a></li>
+    <li class="breadcrumb-item active"><a [routerLink]="['/apartments, apartmentDetail.data.id']">{{apartmentDetail.data.name}}</a></li>
   </ul>
   <div class="row">
     <div class="col-sm-8 ">
       <div class="container shadow">
-        <p class="font-weight-bold " style="font-size: 20px">{{apartment.name}} ____ {{ time | date:'hh:mm:ss a' }}</p>
+        <p class="font-weight-bold " style="font-size: 20px">{{apartmentDetail.data.name}} ____ {{ time | date:'hh:mm:ss a' }}</p>
         <p class="font-weight-bold ">
-          <img src="assets/icon/address.png" width="20" height="20"> {{apartment.address}}
+          <img src="assets/icon/address.png" width="20" height="20"> {{apartmentDetail.data.address}}
         </p>
         <p class="font-weight-bold ">
-          <img src="assets/icon/house.png" width="20" height="20">  Nhà riêng: {{apartment.area}} m2
+          <img src="assets/icon/house.png" width="20" height="20">  Nhà riêng: {{apartmentDetail.data.area}} m2
         </p>
-        <p class="overflow-auto">{{apartment.description}}</p>
+        <p class="overflow-auto">{{apartmentDetail.data.description}}</p>
       </div>
       <p></p>
 
@@ -73,14 +73,14 @@
       </div>
     </div>
     <div class="col-sm-4">
-      <div class="container" style="background-color: black; border-radius: 10px; color: white; margin-top: 20px; margin-bottom: 20px" *ngIf="apartment.startDate != null">
+      <div class="container" style="background-color: black; border-radius: 10px; color: white; margin-top: 20px; margin-bottom: 20px" *ngIf="apartmentDetail.data.startDate != null">
         <p>Vì một vài lý do kỹ thuật, bên host sẽ ngừng cung cấp dịch vụ kể từ ngày: </p>
-        <p style="color: white">{{apartment.startDate}}</p>
+        <p style="color: white">{{apartmentDetail.data.startDate}}</p>
         <p> đến ngày: </p>
-        <p style="color: white">{{apartment.endDate}}</p>
+        <p style="color: white">{{apartmentDetail.data.endDate}}</p>
       </div>
       <div class="container border shadow-lg ">
-        <p style="font-size: 35px;text-align: center">{{apartment.price}}$ /đêm
+        <p style="font-size: 35px;text-align: center">{{apartmentDetail.data.price}}$ /đêm
         <p>
         <form>
           <div class="input-group mb-3">

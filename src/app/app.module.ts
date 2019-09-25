@@ -31,6 +31,8 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { ProfileUserComponent } from './profile-user/profile-user.component';
+import { EditApartmentComponent } from './edit-apartment/edit-apartment.component';
 
 
 @NgModule({
@@ -50,7 +52,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     CreateApartmentComponent,
     HeaderForHostComponent,
     ListApartmentComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    ProfileUserComponent,
+    EditApartmentComponent
   ],
   imports: [
     BrowserModule,

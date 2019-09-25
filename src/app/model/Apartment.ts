@@ -1,3 +1,4 @@
+
 export interface Apartment {
   id: number;
   name: string;
@@ -10,6 +11,8 @@ export interface Apartment {
   area: string;
   rate: string;
   images: string[];
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
+  status: string;
+  user: string;
 }

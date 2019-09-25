@@ -14,6 +14,6 @@ export class HomeForHostComponent implements OnInit {
   }
 
   createApartment() {
-    this.router.navigate(['/create-apartment']);
+    this.router.navigate(['/api/create-apartment']);
   }
 }
